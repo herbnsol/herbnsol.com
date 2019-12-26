@@ -12,11 +12,12 @@ jobs:
     - name: Hugo build
       uses: jakejarvis/hugo-build-action@master
       with:
+        ACCESS_TOKEN: ${{ secrets.ACCESS_KEY }}
         args: --minify --buildDrafts
 
-    - name: Build and Deploy
+    - name: Deploy
       uses: JamesIves/github-pages-deploy-action@releases/v3
       with:
-        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        ACCESS_TOKEN: ${{ secrets.ACCESS_KEY }}
         BRANCH: gh-pages # The branch the action should deploy to.
         FOLDER: public # The folder the action should deploy.
